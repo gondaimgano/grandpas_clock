@@ -93,37 +93,30 @@ class _ClockFaceState extends State<ClockFace>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.indigoAccent[100],
-      body: Stack(
-        alignment: Alignment.center,
-        fit: StackFit.loose,
-        children: [
-          Container(
-            width: MediaQuery.of(context).size.width,
-            height: MediaQuery.of(context).size.height,
 
-          ),
-          Consumer<String>(
-            child: AnimatedBuilder(
-              animation: _controller,
-              builder: (context, child) => Container(
-                width: 200,
-                height: 200,
-                child: CustomPaint(
-                  painter: ClockPainter(
-                    value: oscillate(),
-                  ),
+      body: Container(
+        alignment: Alignment.center,
+        child: Consumer<String>(
+          child: AnimatedBuilder(
+            animation: _controller,
+            builder: (context, child) => Container(
+              width: 150,
+              height: 150,
+              child: CustomPaint(
+                painter: ClockPainter(
+                  value: oscillate(),
                 ),
               ),
             ),
-            builder: (context, time, child) => AspectRatio(
-              aspectRatio: 1.3,
+          ),
+          builder: (context, time, child) => AspectRatio(
+            aspectRatio: 1.3,
+            child: FittedBox(
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: <Widget>[
                   SizedBox(height: 12,),
                   child,
-                  SizedBox(height: 24,),
                   Text(
                     _timer(
                         m: _timeHHmmOnly(time),
@@ -136,13 +129,14 @@ class _ClockFaceState extends State<ClockFace>
                                 velocity: iscomplete ? -2: 2);
                           }
                         }),
-                    style: GoogleFonts.pressStart2P(fontSize: 25,textStyle: TextStyle(color: Colors.white) ),
+                    style: GoogleFonts.pressStart2P(fontSize: 25,textStyle: TextStyle(color: Colors.redAccent[200]) ),
                   ),
+                  SizedBox(height: 12,),
                 ],
               ),
             ),
           ),
-        ],
+        ),
       ),
     );
   }
@@ -167,7 +161,7 @@ class ClockPainter extends CustomPainter {
       ..color = Colors.indigoAccent[200];
 
     canvas.save();
-    canvas.translate(size.width * 0.5, size.height * 0.5);
+    canvas.translate(size.width * 0.5, size.height * 0.1);
 
     canvas.rotate(math.radians(value ?? 0));
     canvas.drawLine(Offset(0, 0), Offset(0, size.height * 0.46), paint);
