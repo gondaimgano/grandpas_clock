@@ -6,6 +6,10 @@ See [flutter.dev/clock](https://flutter.dev/clock) for how to get started, submi
 
 See a [live demo](https://maryx.github.io/flutter_clock) with Flutter for Web!
 
+Example [Grandpas Clock](grandpas_clock)
+
+<img src='grandpas_clock/grandpas.gif' width='350'>
+
 Example [Analog Clock](analog_clock)
 
 <img src='analog_clock/analog.gif' width='350'>
