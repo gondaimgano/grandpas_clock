@@ -117,7 +117,7 @@ class _ClockFaceState extends State<ClockFace>
               ),
             ),
             builder: (context, time, child) => AspectRatio(
-              aspectRatio: 5/3,
+              aspectRatio: 1.3,
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: <Widget>[
@@ -173,7 +173,7 @@ class ClockPainter extends CustomPainter {
     canvas.drawLine(Offset(0, 0), Offset(0, size.height * 0.46), paint);
     canvas.drawCircle(Offset(0, 0), size.width * 0.03, spot);
     canvas.drawCircle(Offset(0, size.width * 0.5), size.width * 0.08, spot);
-    canvas.drawCircle(Offset(0, size.width * 0.4), size.width * 0.05, spot);
+    canvas.drawCircle(Offset(0, size.width * 0.35), size.width * 0.05, spot);
     canvas.restore();
   }
 
