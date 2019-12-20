@@ -8,7 +8,7 @@ See a [live demo](https://maryx.github.io/flutter_clock) with Flutter for Web!
 
 Example [Grandpas Clock](grandpas_clock)
 
-<img src='grandpas_clock/grandpas.gif' width='350'>
+<img src='grandpas_clock/grandpas_clock.gif' width='350'>
 
 Example [Analog Clock](analog_clock)
 
