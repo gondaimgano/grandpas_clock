@@ -8,6 +8,14 @@ import 'package:provider/provider.dart';
 
 import 'package:vector_math/vector_math.dart' as math;
 
+
+const backgroundColor=Color.fromRGBO(6, 24, 19, 1);
+const accentColor=Color.fromRGBO(211,238,232, 1);
+
+const backgroundColor1=Color.fromRGBO(62, 145, 247, 1);
+const accentColor1=Color.fromRGBO(233,248,253, 1);
+
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
@@ -53,7 +61,7 @@ class MyClockApp extends StatelessWidget {
       title: 'Clock Face',
       theme: ThemeData.light().copyWith(
       ),
-      home: ClockFace(title: 'Gondai Competition'),
+      home: ClockFace(title: '''Gondai's Clock Competition'''),
     );
   }
 }
@@ -93,7 +101,7 @@ class _ClockFaceState extends State<ClockFace>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
+      backgroundColor: backgroundColor1,
       body: Container(
         alignment: Alignment.center,
         child: Consumer<String>(
@@ -129,7 +137,7 @@ class _ClockFaceState extends State<ClockFace>
                                 velocity: iscomplete ? -2: 2);
                           }
                         }),
-                    style: GoogleFonts.pressStart2P(fontSize: 25,textStyle: TextStyle(color: Colors.redAccent[200]) ),
+                    style: GoogleFonts.pressStart2P(fontSize: 25,textStyle: TextStyle(color:accentColor1) ),
                   ),
                   SizedBox(height: 12,),
                 ],
@@ -153,12 +161,12 @@ class ClockPainter extends CustomPainter {
       ..strokeWidth = 5.0
       ..style = PaintingStyle.stroke
       ..strokeCap = StrokeCap.butt
-      ..color = Colors.indigoAccent[200];
+      ..color = accentColor1;
 
     Paint spot = Paint()
       ..strokeWidth = 2.0
       ..style = PaintingStyle.fill
-      ..color = Colors.indigoAccent[200];
+      ..color = accentColor1;
 
     canvas.save();
     canvas.translate(size.width * 0.5, size.height * 0.1);
