@@ -8,12 +8,17 @@ import 'package:provider/provider.dart';
 
 import 'package:vector_math/vector_math.dart' as math;
 
+const choice=Color.fromRGBO(6, 24, 19, 1);
+const choiceAccent=Color.fromRGBO(211,238,232, 1); //lime color
 
-const backgroundColor=Color.fromRGBO(6, 24, 19, 1);
-const accentColor=Color.fromRGBO(211,238,232, 1);
+const choice1=Color.fromRGBO(62, 145, 247, 1);
+const choiceAccent1=Color.fromRGBO(233,248,253, 1); //blue sky color
 
-const backgroundColor1=Color.fromRGBO(62, 145, 247, 1);
-const accentColor1=Color.fromRGBO(233,248,253, 1);
+
+const backgroundColor=choice;
+const accentColor=choiceAccent;
+
+
 
 
 void main() async {
@@ -101,7 +106,7 @@ class _ClockFaceState extends State<ClockFace>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: backgroundColor1,
+      backgroundColor: backgroundColor,
       body: Container(
         alignment: Alignment.center,
         child: Consumer<String>(
@@ -137,7 +142,7 @@ class _ClockFaceState extends State<ClockFace>
                                 velocity: iscomplete ? -2: 2);
                           }
                         }),
-                    style: GoogleFonts.pressStart2P(fontSize: 25,textStyle: TextStyle(color:accentColor1) ),
+                    style: GoogleFonts.pressStart2P(fontSize: 25,textStyle: TextStyle(color:accentColor) ),
                   ),
                   SizedBox(height: 12,),
                 ],
@@ -161,12 +166,12 @@ class ClockPainter extends CustomPainter {
       ..strokeWidth = 5.0
       ..style = PaintingStyle.stroke
       ..strokeCap = StrokeCap.butt
-      ..color = accentColor1;
+      ..color = accentColor;
 
     Paint spot = Paint()
       ..strokeWidth = 2.0
       ..style = PaintingStyle.fill
-      ..color = accentColor1;
+      ..color = accentColor;
 
     canvas.save();
     canvas.translate(size.width * 0.5, size.height * 0.1);
@@ -175,7 +180,7 @@ class ClockPainter extends CustomPainter {
     canvas.drawLine(Offset(0, 0), Offset(0, size.height * 0.46), paint);
     canvas.drawCircle(Offset(0, 0), size.width * 0.03, spot);
     canvas.drawCircle(Offset(0, size.width * 0.5), size.width * 0.08, spot);
-    canvas.drawCircle(Offset(0, size.width * 0.35), size.width * 0.05, spot);
+    //canvas.drawCircle(Offset(0, size.width * 0.35), size.width * 0.05, spot);
     canvas.restore();
   }
 
