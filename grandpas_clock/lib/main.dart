@@ -2,7 +2,7 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:google_fonts/google_fonts.dart';
+//import 'package:google_fonts/google_fonts.dart';
 
 import 'package:provider/provider.dart';
 
@@ -38,8 +38,6 @@ void main() async {
     Root(),
   );
 }
-
-
 
 class Root extends StatelessWidget {
   @override
@@ -141,8 +139,7 @@ class _ClockFaceState extends State<ClockFace>
                             _controller.fling(velocity: iscomplete ? -2 : 2);
                           }
                         }),
-                    style: GoogleFonts.pressStart2P(
-                        fontSize: 25, textStyle: TextStyle(color: accentColor)),
+                    style: TextStyle(fontSize: 40, color: accentColor),
                   ),
                   SizedBox(
                     height: 12,
