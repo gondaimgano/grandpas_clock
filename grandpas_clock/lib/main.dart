@@ -39,8 +39,6 @@ void main() async {
   );
 }
 
-
-
 class Root extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -141,9 +139,7 @@ class _ClockFaceState extends State<ClockFace>
                             _controller.fling(velocity: iscomplete ? -2 : 2);
                           }
                         }),
-
-                    style: TextStyle(fontSize: 40,color: accentColor),
-
+                    style: TextStyle(fontSize: 40, color: accentColor),
                   ),
                   SizedBox(
                     height: 12,
