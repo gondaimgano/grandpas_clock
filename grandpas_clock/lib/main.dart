@@ -8,27 +8,14 @@ import 'package:provider/provider.dart';
 
 import 'package:vector_math/vector_math.dart' as math;
 
-const choice=Color.fromRGBO(6, 24, 19, 1);
-const choiceAccent=Color.fromRGBO(211,238,232, 1); //lime color
+const choice = Color.fromRGBO(6, 24, 19, 1);
+const choiceAccent = Color.fromRGBO(211, 238, 232, 1); //lime color
 
-const choice1=Color.fromRGBO(62, 145, 247, 1);
-const choiceAccent1=Color.fromRGBO(233,248,253, 1); //blue sky color
+const choice1 = Color.fromRGBO(62, 145, 247, 1);
+const choiceAccent1 = Color.fromRGBO(233, 248, 253, 1); //blue sky color
 
-
-const backgroundColor=choice;
-const accentColor=choiceAccent;
-
-
-
-
-void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-
-  await SystemChrome.setPreferredOrientations(
-      [DeviceOrientation.landscapeLeft, DeviceOrientation.landscapeRight]);
-
-  return runApp(Root());
-}
+const backgroundColor = choice;
+const accentColor = choiceAccent;
 
 String _addLeadingZeroIfNeeded(int value) {
   if (value < 10) return '0$value';
@@ -41,9 +28,20 @@ String _timer({String m, Function toggle}) {
       "${_addLeadingZeroIfNeeded(TimeOfDay.now().hour)}:${_addLeadingZeroIfNeeded(TimeOfDay.now().minute)}:${_addLeadingZeroIfNeeded(DateTime.now().second)}";
 }
 
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  await SystemChrome.setPreferredOrientations(
+      [DeviceOrientation.landscapeLeft, DeviceOrientation.landscapeRight]);
+
+  return runApp(
+    Root(),
+  );
+}
+
+
+
 class Root extends StatelessWidget {
-
-
   @override
   Widget build(BuildContext context) {
     return MultiProvider(providers: [
@@ -64,8 +62,7 @@ class MyClockApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Clock Face',
-      theme: ThemeData.light().copyWith(
-      ),
+      theme: ThemeData.light().copyWith(),
       home: ClockFace(title: '''Gondai's Clock Competition'''),
     );
   }
@@ -89,16 +86,16 @@ class _ClockFaceState extends State<ClockFace>
 
   @override
   void initState() {
-    _controller =
-        AnimationController(vsync: this, duration: Duration(milliseconds: 3000));
+    _controller = AnimationController(
+        vsync: this, duration: Duration(milliseconds: 3000));
     super.initState();
   }
 
-  String _timeHHmmOnly(String s)
-  {
-   s= s??"${_addLeadingZeroIfNeeded(TimeOfDay.now().hour)}:${_addLeadingZeroIfNeeded(TimeOfDay.now().minute)}:${_addLeadingZeroIfNeeded(DateTime.now().second)}";
+  String _timeHHmmOnly(String s) {
+    s = s ??
+        "${_addLeadingZeroIfNeeded(TimeOfDay.now().hour)}:${_addLeadingZeroIfNeeded(TimeOfDay.now().minute)}:${_addLeadingZeroIfNeeded(DateTime.now().second)}";
 
-    var l= s.split(":");
+    var l = s.split(":");
     l.removeLast();
     return l.join(":");
   }
@@ -122,29 +119,34 @@ class _ClockFaceState extends State<ClockFace>
               ),
             ),
           ),
-          builder: (context, time, child) => AspectRatio(
-            aspectRatio: 1.3,
+          builder: (context, text, pendulum) => AspectRatio(
+            aspectRatio: 5 / 3,
             child: FittedBox(
+              fit: BoxFit.contain,
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: <Widget>[
-                  SizedBox(height: 12,),
-                  child,
+                  SizedBox(
+                    height: 12,
+                  ),
+                  pendulum,
                   Text(
                     _timer(
-                        m: _timeHHmmOnly(time),
+                        m: _timeHHmmOnly(text),
                         toggle: () {
                           bool iscomplete = false;
                           if (_controller != null) {
                             iscomplete =
                                 _controller.status == AnimationStatus.completed;
-                            _controller.fling(
-                                velocity: iscomplete ? -2: 2);
+                            _controller.fling(velocity: iscomplete ? -2 : 2);
                           }
                         }),
-                    style: GoogleFonts.pressStart2P(fontSize: 25,textStyle: TextStyle(color:accentColor) ),
+                    style: GoogleFonts.pressStart2P(
+                        fontSize: 25, textStyle: TextStyle(color: accentColor)),
                   ),
-                  SizedBox(height: 12,),
+                  SizedBox(
+                    height: 12,
+                  ),
                 ],
               ),
             ),
